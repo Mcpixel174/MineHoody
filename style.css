@@ -1,0 +1,252 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Pretty blue title */
+.main-header h1,
+.intro-content h1 {
+  color: #4da6ff;
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+/* COUNTDOWN */
+#top-countdown {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: system-ui, sans-serif;
+}
+
+#count-num {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff4444;
+}
+
+#count-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4da6ff;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#count-text.show {
+  opacity: 1;
+}
+
+.count-hidden {
+  display: none;
+}
+
+/* Banner above main title */
+.main-banner {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Intro logo */
+.intro-logo img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Bubble background */
+.bubbles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: radial-gradient(circle at top, #111 0, #000 50%);
+}
+
+.bubbles span {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  animation: floatUp 18s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20vh);
+    opacity: 0;
+  }
+}
+
+/* Header */
+.main-header {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.main-header p {
+  max-width: 600px;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.social-links a i {
+  margin-right: 8px;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+/* Instagram color */
+.fa-instagram {
+  color: #e1306c;
+}
+
+.social-links a:hover .fa-instagram {
+  color: #ff4f8b;
+  text-shadow: 0 0 10px #ff4f8b;
+}
+
+.social-links a:hover {
+  transform: translateY(-3px);
+  background: #111;
+  color: #4da6ff;
+}
+
+.social-links a:hover i {
+  color: #4da6ff;
+  text-shadow: 0 0 10px #4da6ff;
+}
+
+/* Sections */
+.section {
+  margin: 3rem 0;
+  padding: 2rem 1.5rem;
+  background: rgba(15, 15, 15, 0.8);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+/* Fade-in animation */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Intro overlay */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #222 0, #000 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.6s ease;
+}
+
+.intro-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.intro-content {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(10, 10, 10, 0.9);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: introPop 0.7s ease forwards;
+  width: min(90%, 500px);
+}
+
+@keyframes introPop {
+  0% {
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .social-links {
+    gap: 0.7rem;
+  }
+
+  .section {
+    margin: 2rem 0;
+    padding: 1.5rem 1rem;
+  }
+}
